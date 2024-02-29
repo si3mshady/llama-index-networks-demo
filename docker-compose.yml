@@ -1,0 +1,22 @@
+version: '3'
+services:
+  contributor1:
+    build:
+      context: ./
+      dockerfile: Dockerfile.c1
+    environment:
+      - PORT=8001
+      - OPENAI_API_KEY=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      
+    ports:
+      - "8001:8001"
+
+  contributor2:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.c2
+    environment:
+      - PORT=8002
+      - OPENAI_API_KEY=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      
+
+    ports:
+      - "8002:8002"

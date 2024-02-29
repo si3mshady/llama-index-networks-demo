@@ -1,0 +1,25 @@
+# Use an official Python runtime as the base image
+FROM python:3
+
+# Update and install any needed packages
+RUN apt-get update && apt-get upgrade -y
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY data/ data/
+COPY requirements.txt .
+COPY contributor1.py contributor1.py
+RUN pip3 install -r requirements.txt
+
+
+
+# Set the PORT environment variable with a default value of 8000
+ENV PORT=8000
+
+# Expose port 8001 to allow communication to/from the container
+EXPOSE 8000
+
+# Run the Python script contributor1.py when the container starts
+CMD ["python3", "contributor1.py"]
